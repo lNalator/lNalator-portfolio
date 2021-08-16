@@ -1,6 +1,15 @@
+@font-face {
+    font-family: 'CrDi';
+    src: url('../CreatoDisplay-Light.otf');
+    src: url('../CreatoDisplay-Light.ttf');
+}
+@font-face {
+    font-family: 'CaDr';
+    src: url('../CaviarDreams.ttf');
+}
 header {
   height:10%;
-  background-color: white;
+  background-color: rgb(134, 159, 172);
   min-width:100%;
   position: absolute;
   top:0px;
@@ -13,6 +22,10 @@ body{
   margin-top: 110px;
   background-image: url(../Autres/Images/Capture.png);
   color: white;
+}
+
+h4 {
+  font-family: 'CaDr',Arial;
 }
 
 #header{
@@ -30,8 +43,8 @@ footer {
   position: fixed;
   bottom: 0px;
   left: 0px;
-  color:black;
-  background-color: white;
+    color: black;
+  background-color: rgb(134, 159, 172);
   width: 100%;
   opacity: 70%;
 }
