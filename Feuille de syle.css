@@ -5,19 +5,20 @@ header {
   position: absolute;
   top:0px;
   left: 0px;
+  opacity: 70%;
 }
-
 
 #header{
   margin-left: 45%;
 }
-
-#global {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+/*Style pour le background du body*/
+body{
+  margin-top: 110px;
+  color: white;
+  background-image: url(Autres/Images/Capture.png);
 }
 
+/*          CODE UTILISE POUR LA MISE EN FORME DE MON PORTRAIT
 .moi {
   right: 0px;
 }
@@ -26,19 +27,23 @@ header {
   width: 154px;
   height: 203.4px;
 }
+*/
+
+#global {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
 .global1 {
   margin: 0 auto;
-  width: 700px;
 }
 
-/*Style pour le background du body*/
-body{
-  margin-top: 110px;
-  background-image: url(Autres/Images/BlackTile.png);
-  color: white;
-}
 
+.video {
+  margin: auto;
+  width: 70%;
+}
 
 /*position et apparence du bas de page*/
 footer {
@@ -48,6 +53,7 @@ footer {
   color:black;
   background-color: white;
   width: 100%;
+  opacity: 70%;
 }
 
 
