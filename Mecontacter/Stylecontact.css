@@ -12,6 +12,11 @@ header {
   margin-left: 45%;
 }
 
+.global {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
 /*Style pour le background du body*/
 body{

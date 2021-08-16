@@ -12,6 +12,25 @@ header {
   margin-left: 45%;
 }
 
+#global {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.moi {
+  right: 0px;
+}
+
+#moi {
+  width: 154px;
+  height: 203.4px;
+}
+
+.global1 {
+  margin: 0 auto;
+  width: 700px;
+}
 
 /*Style pour le background du body*/
 body{
