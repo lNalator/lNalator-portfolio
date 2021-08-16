@@ -17,6 +17,10 @@ header {
   opacity: 70%;
 }
 
+p {
+  font-family: 'CaDr','CrDi',Arial;
+}
+
 /*Style pour le background du body*/
 body{
   margin-top: 110px;

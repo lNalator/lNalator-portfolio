@@ -26,7 +26,7 @@ body{
   color: white;
   background-image: url(Autres/Images/Capture.png);
 }
-
+/*Reglage des fonts */
 h3{
   font-family: 'CaDr';
 }
