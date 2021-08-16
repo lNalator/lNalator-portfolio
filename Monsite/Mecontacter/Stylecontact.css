@@ -16,7 +16,7 @@ header {
 /*Style pour le background du body*/
 body{
   margin-top: 110px;
-  background-image: url(../../Autres/Images/BlackTile.png);
+  background-image: url(../Autres/Images/BlackTile.png);
   color: white;
 }
 
