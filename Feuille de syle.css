@@ -69,7 +69,8 @@ p {
 
 /*position et apparence du bas de page*/
 footer {
-  position: fixed;
+  position: relative;
+  margin: auto;
   bottom: 0px;
   left: 0px;
   color:  black;
