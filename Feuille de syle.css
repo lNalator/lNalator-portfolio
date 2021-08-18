@@ -30,8 +30,17 @@ body{
 h3{
   font-family: 'CaDr';
 }
+h4 {
+  font-family: 'CaDr',Arial;
+}
 h5 {
   text-align: right;
+}
+
+.GameIMG {
+  width: 384px;
+  height: 204px;
+  margin-left: 25%;
 }
 
 p {
