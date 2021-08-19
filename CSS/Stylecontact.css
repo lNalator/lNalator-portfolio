@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'CrDi';
-    src: url('Autres/fonts/CreatoDisplay-Light.otf');
-    src: url('Autres/fonts/CreatoDisplay-Light.ttf');
+    src: url('../Autres/fonts/CreatoDisplay-Light.otf');
+    src: url('../Autres/fonts/CreatoDisplay-Light.ttf');
 }
 @font-face {
     font-family: 'CaDr';
-    src: url('Autres/fonts/CaviarDreams.ttf');
+    src: url('../Autres/fonts/CaviarDreams.ttf');
 }
 header {
   height:10%;
@@ -24,7 +24,7 @@ p {
 /*Style pour le background du body*/
 body{
   margin-top: 110px;
-  background-image: url(Autres/Images/Capture.png);
+  background-image: url(../Autres/Images/Capture.png);
   color: white;
 }
 
