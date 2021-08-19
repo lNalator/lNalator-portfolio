@@ -155,7 +155,9 @@ h4 {
 .GameIMG {
   width: 384px;
   height: 204px;
-  margin-left: 25%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .video {
@@ -169,13 +171,9 @@ footer {
   position: fixed;
   bottom: 0px;
   left: 0px;
-    color: black;
+  color: black;
   background-color: rgb(134, 159, 172);
   width: 100%;
   opacity: 70%;
-}
-
-
-#footer {
-  margin-left: 40%;
+  text-align: center;
 }

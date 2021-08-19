@@ -182,9 +182,5 @@ footer {
   background-color: rgb(134, 159, 172);
   width: 100%;
   opacity: 70%;
-}
-
-
-#footer {
-  margin-left: 40%;
+  text-align: center;
 }

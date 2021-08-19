@@ -134,6 +134,7 @@ p {
 body{
   background-image: url(../Autres/Images/Capture.png);
   color: white;
+  text-align: center;
 }
 
 h4 {
@@ -162,9 +163,4 @@ footer {
   background-color: rgb(134, 159, 172);
   width: 100%;
   opacity: 70%;
-}
-
-
-#footer {
-  margin-left: 40%;
 }
