@@ -132,10 +132,36 @@ body{
   color: white;
 }
 
+.global {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+h1 {
+  font-family: 'CaDr','CrDi';
+}
+h4 {
+  font-family: 'CaDr','CrDi';
+}
 
 
+.Liens li{
+  font-size: 20px;
+  color: white;
+  font-family: 'CaDr','CrDi';
+}
 
+.GameIMG {
+  width: 384px;
+  height: 204px;
+  margin-left: 25%;
+}
 
+.video {
+  margin: auto;
+  width: 70%;
+}
 
 
 /*position et apparence du bas de page*/

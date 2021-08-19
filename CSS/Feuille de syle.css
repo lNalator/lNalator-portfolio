@@ -171,21 +171,17 @@ p {
 }
 
 
-.video {
-  margin: auto;
-  width: 70%;
-}
 
 /*position et apparence du bas de page*/
 footer {
-  position: relative;
+  position: fixed;
   margin: auto;
   bottom: 0px;
   left: 0px;
   color:  black;
   background-color: rgb(134, 159, 172);
   width: 100%;
-  opacity: 75%;
+  opacity: 70%;
 }
 
 
