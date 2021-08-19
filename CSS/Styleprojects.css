@@ -138,6 +138,12 @@ body{
   width: 50%;
 }
 
+.globalProj {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
 h1 {
   font-family: 'CaDr','CrDi';
 }
