@@ -126,3 +126,30 @@ li a {
 .sous-menu > li:hover > a {
   color: rgb(194, 207, 214);
 }
+
+body{
+  background-image: url(../Autres/Images/Capture.png);
+  color: white;
+}
+
+
+
+
+
+
+
+/*position et apparence du bas de page*/
+footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+    color: black;
+  background-color: rgb(134, 159, 172);
+  width: 100%;
+  opacity: 70%;
+}
+
+
+#footer {
+  margin-left: 40%;
+}
