@@ -144,7 +144,19 @@ body{
   width: 75%;
 }
 
+.ProjSite {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
 h1 {
+  font-family: 'CaDr','CrDi';
+}
+h2 {
+  font-family: 'CaDr','CrDi';
+}
+h3 {
   font-family: 'CaDr','CrDi';
 }
 h4 {
