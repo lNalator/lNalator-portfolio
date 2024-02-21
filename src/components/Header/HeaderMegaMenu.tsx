@@ -73,7 +73,7 @@ export function HeaderMegaMenu(props: any) {
       <header className={classes.header}>
         <Group justify="space-evenly" h="100%">
           <Link href="/">
-            <Image src="Samurai.png" h={"3.7rem"} radius={100}/>
+            <Image src="Samurai.png" h={"3.7rem"} radius={100} />
           </Link>
           <Group h="100%" gap={0} visibleFrom="sm">
             <Link href="/" className={classes.link}>
@@ -151,7 +151,8 @@ export function HeaderMegaMenu(props: any) {
         zIndex={1000000}
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
-          <Image src="Samurai.png" h={"20rem"} />
+          <Divider my="sm" />
+          <Image src="Samurai.png" h={"21rem"} />
           <Divider my="sm" />
 
           <Link href="/" className={classes.link}>
@@ -175,11 +176,6 @@ export function HeaderMegaMenu(props: any) {
           </Link>
 
           <Divider my="sm" />
-
-          <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
-          </Group>
         </ScrollArea>
       </Drawer>
     </Box>
