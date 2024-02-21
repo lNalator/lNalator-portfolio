@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <link rel="icon" href="../../public/favicon.ico" />
+        <link rel="icon" href="/faviconSamurai.ico" />
         <ColorSchemeScript defaultColorScheme="auto" />
       </Head>
       <body>
