@@ -7,8 +7,8 @@ import {
   MantineProvider,
   MantineColorsTuple,
 } from "@mantine/core";
-import { HeaderMegaMenu } from "../components/Header/HeaderMegaMenu";
-import { FooterCentered } from "../components/Footer/FooterCentered";
+import classes from "./_main.module.css";
+import Navbar from "../components/navBar/Navbar";
 
 const myColor: MantineColorsTuple = [
   "#ffeaec",
@@ -32,16 +32,13 @@ const theme = createTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <MantineProvider theme={theme}>
-      <AppShell header={{ height: 60 }}>
-        <AppShell.Header>
-          <HeaderMegaMenu />
-        </AppShell.Header>
+      <AppShell className={classes.root}>
+        <AppShell.Navbar bg={"unset"}>
+          <Navbar />
+        </AppShell.Navbar>
         <AppShell.Main>
           <Component {...pageProps} />
         </AppShell.Main>
-        <AppShell.Footer>
-          <FooterCentered />
-        </AppShell.Footer>
       </AppShell>
     </MantineProvider>
   );

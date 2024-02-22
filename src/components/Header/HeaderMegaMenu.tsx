@@ -1,11 +1,9 @@
 import {
   HoverCard,
   Group,
-  Button,
   UnstyledButton,
   Text,
   SimpleGrid,
-  ThemeIcon,
   Anchor,
   Divider,
   Center,
@@ -19,27 +17,10 @@ import {
   Image,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import {
-  IconCode,
-  IconDeviceGamepad2,
-  IconChevronDown,
-} from "@tabler/icons-react";
+import { IconChevronDown } from "@tabler/icons-react";
 import classes from "./HeaderMegaMenu.module.css";
 import Link from "next/link";
-
-const mockdata = [
-  {
-    icon: IconDeviceGamepad2,
-    title: `Arcade Runnin'`,
-    description:
-      "Un jeu créé sous Unity pendant 1 semaine après 2 ans sans avoir programmé en C# - 2020",
-  },
-  {
-    icon: IconCode,
-    title: "Code Wars",
-    description: `'Les exercices de programmation réalisé pour m'entrainer en C#'`,
-  },
-];
+import HeaderLinks from "./component/HeaderLinks";
 
 export function HeaderMegaMenu(props: any) {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
@@ -47,37 +28,16 @@ export function HeaderMegaMenu(props: any) {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const theme = useMantineTheme();
 
-  const links = mockdata.map((item) => (
-    <UnstyledButton className={classes.subLink} key={item.title}>
-      <Group wrap="nowrap" align="flex-start">
-        <ThemeIcon size={34} variant="default" radius="md">
-          <item.icon
-            style={{ width: rem(22), height: rem(22) }}
-            color={theme.colors.blue[6]}
-          />
-        </ThemeIcon>
-        <div>
-          <Text size="sm" fw={500}>
-            {item.title}
-          </Text>
-          <Text size="xs" c="dimmed">
-            {item.description}
-          </Text>
-        </div>
-      </Group>
-    </UnstyledButton>
-  ));
-
   return (
     <Box pb={120}>
       <header className={classes.header}>
         <Group justify="space-evenly" h="100%">
           <Link href="/">
-            <Image src="Samurai.png" h={"3.7rem"} radius={100} />
+            <Image src="Samurai.png" h={"3.7rem"} radius={"100%"} />
           </Link>
           <Group h="100%" gap={0} visibleFrom="sm">
             <Link href="/" className={classes.link}>
-              Home
+              Accueil
             </Link>
             <HoverCard
               width={600}
@@ -90,7 +50,7 @@ export function HeaderMegaMenu(props: any) {
                 <Link href="/projects" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Projects
+                      Projets
                     </Box>
                     <IconChevronDown
                       style={{ width: rem(16), height: rem(16) }}
@@ -102,16 +62,16 @@ export function HeaderMegaMenu(props: any) {
 
               <HoverCard.Dropdown style={{ overflow: "hidden" }}>
                 <Group justify="space-between" px="md">
-                  <Text fw={500}>Features</Text>
+                  <Text fw={500}>Projets</Text>
                   <Anchor href="#" fz="xs">
-                    View all
+                    Voir Tout
                   </Anchor>
                 </Group>
 
                 <Divider my="sm" />
 
                 <SimpleGrid cols={2} spacing={0}>
-                  {links}
+                  <HeaderLinks />
                 </SimpleGrid>
 
                 {/* <div className={classes.dropdownFooter}>
@@ -130,7 +90,7 @@ export function HeaderMegaMenu(props: any) {
               </HoverCard.Dropdown>
             </HoverCard>
             <Link href="/about" className={classes.link}>
-              About
+              A propos
             </Link>
           </Group>
           <Burger
@@ -156,12 +116,12 @@ export function HeaderMegaMenu(props: any) {
           <Divider my="sm" />
 
           <Link href="/" className={classes.link}>
-            Home
+            Accueil
           </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
-                Features
+                Projets
               </Box>
               <IconChevronDown
                 style={{ width: rem(16), height: rem(16) }}
@@ -169,10 +129,12 @@ export function HeaderMegaMenu(props: any) {
               />
             </Center>
           </UnstyledButton>
-          <Collapse in={linksOpened}>{links}</Collapse>
+          <Collapse in={linksOpened}>
+            <HeaderLinks />
+          </Collapse>
 
           <Link href="/about" className={classes.link}>
-            About
+            A propos
           </Link>
 
           <Divider my="sm" />

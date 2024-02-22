@@ -2,35 +2,32 @@ import { Anchor, Group, ActionIcon, rem, Image } from "@mantine/core";
 import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
 import classes from "./FooterCentered.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const links = [
   { link: "/about", label: "Contact" },
-  { link: "#", label: "Privacy" },
   { link: "#", label: "Blog" },
-  { link: "#", label: "Store" },
-  { link: "#", label: "Careers" },
 ];
 
 export function FooterCentered() {
+  const router = useRouter();
   const items = links.map((link) => (
     <Anchor
       c="dimmed"
       key={link.label}
-      href={link.link}
       lh={1}
-      onClick={(event) => event.preventDefault()}
+      onClick={() => router.push(link.link)}
+      className={classes.link}
       size="sm"
     >
-      <Link href={link.link} className={classes.link}>
-        {link.label}
-      </Link>
+      {link.label}
     </Anchor>
   ));
 
   return (
     <div className={classes.footer}>
       <div className={classes.inner}>
-        <Image src="Samurai.png" h={"3.7rem"} radius={100} />
+        <Image src="Samurai.png" mah={"3.7rem"} maw={"3.7rem"} radius={"100%"} />
 
         <Group className={classes.links}>{items}</Group>
 
