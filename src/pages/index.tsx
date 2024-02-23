@@ -1,5 +1,6 @@
+import { Title } from "@mantine/core";
 import { Head } from "next/document";
 
 export default function Home() {
-  return <h1>Yo, Home page</h1>;
+  return <Title>Yo, Home page</Title>;
 }

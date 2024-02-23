@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Sequel";
+  src: url("../../public/fonts/Sequel100Black-105.ttf");
+  src: url("../../public/fonts/Sequel100Black-115.ttf");
+  src: url("../../public/fonts/Sequel100Black-95.ttf");
+  src: url("../../public/fonts/Sequel100Black-85.ttf");
+  src: url("../../public/fonts/Sequel100Black-75.ttf");
+  src: url("../../public/fonts/Sequel100Black-65.ttf");
+  src: url("../../public/fonts/Sequel100Black-55.ttf");
+  src: url("../../public/fonts/Sequel100Black-45.ttf");
+}
+@font-face {
+  font-family: "Barcode128";
+  src: url("../../public/fonts/LibreBarcode128-Regular.ttf");
+}
+@font-face {
+  font-family: "Barcode39";
+  src: url("../../public/fonts/LibreBarcode39-Regular.ttf");
+}
+@font-face {
+  font-family: "Barcode39E";
+  src: url("../../public/fonts/LibreBarcode39Extended-Regular.ttf");
+}
+
+* {
+  font-family: "Sequel", sans-serif;
+}
