@@ -7,3 +7,8 @@
   );
   background-size: cover;
 }
+
+.main {
+  position: relative;
+  padding-left: rem(65px);
+}

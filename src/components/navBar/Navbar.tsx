@@ -5,50 +5,11 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import AboutPage from "./component/AboutPage";
-import ProjectsPage from "./component/ProjectsPage";
-import HomePage from "./component/HomePage";
-
-const variants = {
-  enter: (direction: number) => {
-    return {
-      zIndex: -1,
-      y: direction > 0 ? 700 : -700,
-      opacity: 0,
-    };
-  },
-  center: {
-    zIndex: 1,
-    y: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => {
-    return {
-      zIndex: 0,
-      y: direction < 0 ? 700 : -700,
-      opacity: 0,
-    };
-  },
-};
-
-function NavPath(pathName: string) {
-  if (pathName === "/about") {
-    return {
-      prevLink: "/projects",
-      nextLink: "/",
-    };
-  } else if (pathName === "/projects") {
-    return {
-      prevLink: "/",
-      nextLink: "/about",
-    };
-  } else {
-    return {
-      prevLink: "/about",
-      nextLink: "/projects",
-    };
-  }
-}
+import AboutPage from "./pages/AboutPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import HomePage from "./pages/HomePage";
+import { variants } from "./components/variants";
+import NavPath from "./components/NavPath";
 
 export default function Navbar() {
   const router = useRouter();
@@ -75,14 +36,13 @@ export default function Navbar() {
             key={page}
             className={classes.textContainer}
             custom={direction}
-            variants={variants}
+            variants={variants.desktop}
             initial="enter"
             animate="center"
             exit="exit"
             transition={{
               y: { type: "tween", duration: 0.5 },
               opacity: { duration: 0.55 },
-              ease: "easeInOut",
             }}
           >
             {(pathName === "/about" && <AboutPage />) ||
@@ -100,13 +60,4 @@ export default function Navbar() {
       />
     </nav>
   );
-}
-
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`https://.../data`);
-  const data = await res.json();
-
-  // Pass data to the page via props
-  return { props: { data } };
 }
