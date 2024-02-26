@@ -14,9 +14,9 @@ function useParallax(value: MotionValue<number>, distance: number) {
 
 export default function Parallax() {
   const [animate, setAnimate] = useState([
-    { x: 0, y: 0, rotate: 0 },
-    { x: 0, y: 0, rotate: 0 },
-    { x: 0, y: 0, rotate: 0 },
+    { x: "0", y: "0", rotate: 0 },
+    { x: "0", y: "0", rotate: 0 },
+    { x: "0", y: "0", rotate: 0 },
   ]);
 
   const ref = useRef(null);
