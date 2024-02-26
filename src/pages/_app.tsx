@@ -7,6 +7,7 @@ import Navbar from "../components/navBar/Navbar";
 import { NavBarMobile } from "../components/navBar/mobile/NavBarMobile";
 import TogglerButton from "../components/themeToggler/togglerButton";
 import Parallax from "../components/bg-Parallax/Parallax";
+import useWindowSize from "../helpers/useWindowSize";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

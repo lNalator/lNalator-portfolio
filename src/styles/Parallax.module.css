@@ -1,5 +1,7 @@
 .container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -17,73 +19,50 @@
 .elementRect {
   height: auto;
   width: 100%;
-  position: absolute;
+  position: fixed;
   transition: all 0.5s ease;
   z-index: 0;
 }
 
 .elementElipse {
-  bottom: -25vh;
-  left: -12.5vw;
   width: rem(668px);
   ellipse {
     fill: light-dark(#05ff00, #5800c9);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
   }
   @media (max-width: $mantine-breakpoint-lg) {
-    bottom: -12.5vh;
-    left: -10vw;
     width: rem(568px);
   }
   @media (max-width: $mantine-breakpoint-sm) {
-    bottom: -9vh;
-    right: -17vw;
-    width: rem(360px);
+    width: rem(460px);
   }
 }
 
 .elementLine {
-  top: -30vh;
-  left: -10vw;
   width: rem(1750px);
   rect {
     fill: light-dark(#04c3ff, #c300c7);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
   }
 
   @media (max-width: $mantine-breakpoint-lg) {
-    top: -25vh;
-    left: -15vw;
     width: rem(1612px);
   }
   @media (max-width: $mantine-breakpoint-sm) {
-    top: -12.5vh;
-    left: -20vw;
     width: rem(960px);
   }
 }
 
 .elementRect {
-  bottom: -20vh;
-  right: -10vw;
   width: rem(860px);
   rect {
     fill: light-dark(#ffe600, #1a00bb);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
   }
 
   @media (max-width: $mantine-breakpoint-lg) {
-    bottom: -12.5vh;
-    right: -10vw;
     width: rem(660px);
   }
 
   @media (max-width: $mantine-breakpoint-sm) {
-    bottom: 30vh;
-    right: -17vw;
-    width: rem(360px);
+    top: 10vh;
+    width: rem(460px);
   }
 }
