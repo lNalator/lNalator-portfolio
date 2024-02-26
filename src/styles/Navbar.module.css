@@ -8,7 +8,7 @@
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 
-  @media (max-width: $mantine-breakpoint-sm) {
+  @media (max-width: 767px) {
     display: none;
   }
 }
@@ -23,7 +23,7 @@
   transform: scale(-1);
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
 
-  @media (max-width: $mantine-breakpoint-sm) {
+  @media (max-width: 767px) {
     writing-mode: unset;
     transform: unset;
   }
@@ -41,7 +41,7 @@
 .textContainer {
   position: absolute;
 
-  @media (max-width: $mantine-breakpoint-sm) {
+  @media (max-width: 767px) {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;

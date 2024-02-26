@@ -3,51 +3,14 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import classes from "../../../styles/Navbar.module.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { AnimatePresence, motion, wrap } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import AboutPage from "../component/AboutPage";
-import ProjectsPage from "../component/ProjectsPage";
-import HomePage from "../component/HomePage";
+import AboutPage from "../pages/AboutPage";
+import ProjectsPage from "../pages/ProjectsPage";
+import HomePage from "../pages/HomePage";
+import { variants } from "../components/variants";
+import NavPath from "../components/NavPath";
 
-const variants = {
-  enter: (direction: number) => {
-    return {
-      x: direction > 0 ? 500 : -500,
-      opacity: 0,
-    };
-  },
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 500 : -500,
-      opacity: 0,
-    };
-  },
-};
-
-function NavPath(pathName: string) {
-  if (pathName === "/about") {
-    return {
-      prevLink: "/projects",
-      nextLink: "/",
-    };
-  } else if (pathName === "/projects") {
-    return {
-      prevLink: "/",
-      nextLink: "/about",
-    };
-  } else {
-    return {
-      prevLink: "/about",
-      nextLink: "/projects",
-    };
-  }
-}
 
 export function NavBarMobile() {
   const router = useRouter();
@@ -80,7 +43,7 @@ export function NavBarMobile() {
               className={classes.textContainer}
               key={page}
               custom={direction}
-              variants={variants}
+              variants={variants.mobile}
               initial="enter"
               animate="center"
               exit="exit"
@@ -91,7 +54,7 @@ export function NavBarMobile() {
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
-              dragPropagation={true} 
+              dragPropagation={true}
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
 
