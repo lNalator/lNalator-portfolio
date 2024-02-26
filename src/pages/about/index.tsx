@@ -1,3 +1,5 @@
+import { Title } from "@mantine/core";
+
 export default function About() {
-  return <h1>Yo, About page</h1>;
+  return <Title>Yo, About page</Title>;
 }

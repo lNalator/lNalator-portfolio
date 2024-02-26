@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  background-image: light-dark(
+    linear-gradient(121.5deg, #00ff47 0%, #00fff0 45%, #0066ff 100%),
+    linear-gradient(121.5deg, #000e90ff 0%, #2d005aff 45%, #87019dff 100%)
+  );
+  background-size: cover;
+}
+
+.elementElipse,
+.elementLine,
+.elementRect {
+  height: auto;
+  width: 100%;
+  position: fixed;
+  transition: all 0.5s ease;
+  z-index: 0;
+}
+
+.elementElipse {
+  width: rem(668px);
+  ellipse {
+    fill: light-dark(#05ff00, #5800c9);
+  }
+  @media (max-width: $mantine-breakpoint-lg) {
+    width: rem(568px);
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: rem(460px);
+  }
+}
+
+.elementLine {
+  width: rem(1750px);
+  rect {
+    fill: light-dark(#04c3ff, #c300c7);
+  }
+
+  @media (max-width: $mantine-breakpoint-lg) {
+    width: rem(1612px);
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: rem(960px);
+  }
+}
+
+.elementRect {
+  width: rem(860px);
+  rect {
+    fill: light-dark(#ffe600, #1a00bb);
+  }
+
+  @media (max-width: $mantine-breakpoint-lg) {
+    width: rem(660px);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    top: 10vh;
+    width: rem(460px);
+  }
+}

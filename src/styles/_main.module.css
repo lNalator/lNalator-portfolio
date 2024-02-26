@@ -1,0 +1,14 @@
+.root {
+  width: 100vw;
+  height: 100vh;
+  background-image: light-dark(
+    linear-gradient(121.5deg, #00ff47 0%, #00fff0 45%, #0066ff 100%),
+    linear-gradient(121.5deg, #000e90ff 0%, #2d005aff 45%, #87019dff 100%)
+  );
+  background-size: cover;
+}
+
+.main {
+  position: relative;
+  padding-left: rem(65px);
+}
