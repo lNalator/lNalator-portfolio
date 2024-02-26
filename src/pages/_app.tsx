@@ -7,8 +7,11 @@ import Navbar from "../components/navBar/Navbar";
 import { NavBarMobile } from "../components/navBar/mobile/NavBarMobile";
 import Parallax from "../components/bg-Parallax/Parallax";
 import TogglerButton from "../components/ThemeToggler/togglerButton";
+import useWindowSize from "../helpers/useWindowSize";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const window = useWindowSize();
+
   return (
     <MantineProvider>
       <AppShell className={classes.root}>
@@ -21,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <AppShell.Main className={classes.main}>
           <TogglerButton />
 
-          <Component {...pageProps} />
+          <Component {...pageProps} window={window} />
         </AppShell.Main>
 
         <AppShell.Footer hiddenFrom="sm" bg={"unset"} withBorder={false}>

@@ -5,11 +5,11 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import AboutPage from "./pages/AboutPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import HomePage from "./pages/HomePage";
-import { variants } from "./components/variants";
-import NavPath from "./components/NavPath";
+import ProjectsPage from "./components/ProjectsPage";
+import HomePage from "./components/HomePage";
+import { variants } from "./settings/variants";
+import NavPath from "./settings/NavPath";
+import ContactPage from "./components/ContactPage";
 
 export default function Navbar() {
   const router = useRouter();
@@ -45,7 +45,7 @@ export default function Navbar() {
               opacity: { duration: 0.55 },
             }}
           >
-            {(pathName === "/about" && <AboutPage />) ||
+            {(pathName === "/contact" && <ContactPage />) ||
               (pathName === "/projects" && <ProjectsPage />) ||
               (pathName === "/" && <HomePage />)}
           </motion.div>

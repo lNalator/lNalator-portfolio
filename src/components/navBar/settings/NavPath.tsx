@@ -1,5 +1,5 @@
 export default function NavPath(pathName: string) {
-  if (pathName === "/about") {
+  if (pathName === "/contact") {
     return {
       prevLink: "/projects",
       nextLink: "/",
@@ -7,11 +7,11 @@ export default function NavPath(pathName: string) {
   } else if (pathName === "/projects") {
     return {
       prevLink: "/",
-      nextLink: "/about",
+      nextLink: "/contact",
     };
   } else {
     return {
-      prevLink: "/about",
+      prevLink: "/contact",
       nextLink: "/projects",
     };
   }

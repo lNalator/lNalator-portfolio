@@ -1,7 +1,7 @@
 import { Text } from "@mantine/core";
 import classes from "../../../styles/Navbar.module.css";
 
-export default function AboutPage() {
+export default function ContactPage() {
   return (
     <>
       <Text size="xl" className={classes.text}>

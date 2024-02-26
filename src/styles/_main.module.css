@@ -11,4 +11,7 @@
 .main {
   position: relative;
   padding-left: rem(65px);
+  @media (max-width: $mantine-breakpoint-lg) {
+    padding-left: unset;
+  }
 }
