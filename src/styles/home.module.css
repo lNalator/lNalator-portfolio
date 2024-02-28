@@ -5,8 +5,6 @@
   margin: auto;
   overflow: hidden;
   overflow-x: hidden;
-  overflow-block: hidden;
-  position: absolute;
   @media (max-width: $mantine-breakpoint-lg) {
     height: 2250px;
   }
