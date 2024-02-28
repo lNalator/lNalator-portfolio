@@ -1,0 +1,59 @@
+.root {
+  width: 60%;
+  margin: 10rem 0;
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: 80%;
+  }
+}
+
+.text {
+  font-family: "Sequel", sans-serif;
+  color: light-dark(var(--mantine-color-black), white);
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: 4vw;
+  }
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: "Sequel", sans-serif;
+  color: white;
+
+  &::placeholder {
+    color: white;
+  }
+}
+
+.button {
+  --button-bg: light-dark(
+    linear-gradient(
+      125deg,
+      var(--mantine-color-cyan-filled) 0%,
+      var(--mantine-color-lime-filled) 100%
+    ),
+    linear-gradient(
+      125deg,
+      var(--mantine-color-pink-filled) 0%,
+      var(--mantine-color-violet-filled) 100%
+    )
+  );
+  --button-hover: light-dark(
+    linear-gradient(
+      125deg,
+      var(--mantine-color-cyan-filled) 0%,
+      var(--mantine-color-lime-filled) 100%
+    ),
+    linear-gradient(
+      125deg,
+      var(--mantine-color-pink-filled) 0%,
+      var(--mantine-color-violet-filled) 100%
+    )
+  );
+  color: light-dark(
+    var(--mantine-color-scheme-light),
+    var(--mantine-color-scheme-dark)
+  );
+  font-weight: 500;
+}
