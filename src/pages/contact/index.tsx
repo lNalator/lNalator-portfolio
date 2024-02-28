@@ -6,9 +6,12 @@ import {
   Button,
   Flex,
   Input,
+  ActionIcon,
+  rem,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import classes from "../../styles/contact.module.css";
+import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
 
 export default function Contact(props: any) {
   const form = useForm({
@@ -31,7 +34,32 @@ export default function Contact(props: any) {
         <Title order={3} ta="center" className={classes.text}>
           N'hésitez pas à me contacter
         </Title>
-        <br />
+        <Group gap="xs" justify="center" wrap="nowrap" m={"sm"}>
+          <ActionIcon
+            autoContrast
+            size="xl"
+            radius="xl"
+            variant="default"
+            classNames={{ root: classes.aiButton, icon: classes.icons }}
+          >
+            <IconBrandLinkedin
+              style={{ width: rem(25), height: rem(25) }}
+              stroke={1.5}
+            />
+          </ActionIcon>
+          <ActionIcon
+            autoContrast
+            size="xl"
+            radius="xl"
+            variant="default"
+            classNames={{ root: classes.aiButton, icon: classes.icons }}
+          >
+            <IconBrandGithub
+              style={{ width: rem(25), height: rem(25) }}
+              stroke={1.5}
+            />
+          </ActionIcon>
+        </Group>
         <Title order={2} ta="center" className={classes.text}>
           enzomidonetpro@gmail.com
         </Title>
@@ -77,7 +105,12 @@ export default function Contact(props: any) {
         />
 
         <Group justify="center" mt="xl">
-          <Button type="submit" size="md" className={classes.button}>
+          <Button
+            type="submit"
+            size="md"
+            className={classes.button}
+            autoContrast
+          >
             Send message
           </Button>
         </Group>

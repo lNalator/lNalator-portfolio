@@ -2,9 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   z-index: 0;
   background-image: light-dark(
@@ -27,7 +27,7 @@
 .elementElipse {
   width: rem(668px);
   ellipse {
-    fill: light-dark(#05ff00, #5800c9);
+    fill: light-dark(hsl(119, 100%, 65%), #5800c9);
   }
   @media (max-width: $mantine-breakpoint-lg) {
     width: rem(568px);
@@ -40,7 +40,7 @@
 .elementLine {
   width: rem(1750px);
   rect {
-    fill: light-dark(#04c3ff, #c300c7);
+    fill: light-dark(hsl(194, 100%, 65%), #c300c7);
   }
 
   @media (max-width: $mantine-breakpoint-lg) {
@@ -54,7 +54,7 @@
 .elementRect {
   width: rem(860px);
   rect {
-    fill: light-dark(#ffe600, #1a00bb);
+    fill: light-dark(hsl(54, 100%, 65%), #1a00bb);
   }
 
   @media (max-width: $mantine-breakpoint-lg) {

@@ -1,0 +1,240 @@
+.container {
+  width: 1030px;
+  max-width: 90%;
+  height: 2000px;
+  margin: auto;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+.imageContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 300px;
+  left: 0px;
+  right: 0px;
+  z-index: 5;
+}
+
+.image {
+  width: 100%;
+  max-width: 300px;
+  border: 5px solid var(--mantine-color-yellow-6);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: 30vw;
+  }
+}
+
+.textContainerTitle,
+.textContainerYears,
+.textContainerLocalisation,
+.titleContainerPresentation,
+.textContainerPresentation,
+.titleContainerSearch,
+.textContainerSearch,
+.searchSign,
+.presentationSign {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.textContainerTitle {
+  top: 175px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.textContainerYears {
+  top: 600px;
+  left: 450px;
+  right: 0px;
+
+  .title {
+    text-align: left;
+  }
+  .text {
+    text-align: right;
+  }
+}
+
+.textContainerLocalisation {
+  top: 650px;
+  left: -450px;
+  right: 0px;
+  z-index: 7;
+}
+
+.titleContainerPresentation {
+  width: 80%;
+  top: 1000px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+  .titlePresentation {
+    text-align: left;
+    font-size: rem(35px);
+    font-family: "Sequel", sans-serif;
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  }
+}
+
+.textContainerPresentation {
+  width: 500px;
+  top: 1125px;
+  left: -400px;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+  display: flex;
+  padding-top: 1rem;
+
+  &::before {
+    content: "";
+    width: 116px;
+    height: 6px;
+    background: #fec107;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &::after {
+    content: "";
+    width: 116px;
+    height: 6px;
+    background: #fec107;
+    position: absolute;
+    right: 50px;
+    bottom: -10px;
+  }
+  .textPresentation {
+    text-align: left;
+    font-size: rem(20px);
+    font-family: "Sequel", sans-serif;
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  }
+}
+
+.titleContainerSearch {
+  top: 1450px;
+  left: 1000px;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+  .titlePresentation {
+    text-align: left;
+    font-size: rem(35px);
+    font-family: "Sequel", sans-serif;
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  }
+}
+
+.textContainerSearch {
+  width: 600px;
+  top: 1600px;
+  right: -700px;
+  left: 0;
+  padding-top: 1rem;
+  z-index: 5;
+  margin: auto;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  &::before {
+    content: "";
+    width: 116px;
+    height: 6px;
+    background: #fec107;
+    position: absolute;
+    left: 450px;
+    right: 0;
+    top: 0;
+  }
+  .textPresentation {
+    text-align: left;
+    font-size: rem(20px);
+    font-family: "Sequel", sans-serif;
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  }
+}
+
+.textPresentationA {
+  position: absolute;
+  top: 1750px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: 325px;
+  text-align: center;
+  font-size: rem(20px);
+  text-decoration: underline;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-yellow-6));
+}
+
+.title {
+  text-align: center;
+  font-family: "Sequel", sans-serif;
+  font-size: rem(50px);
+  margin: 0;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+}
+
+.text {
+  text-align: center;
+  font-family: "Sequel", sans-serif;
+  font-size: rem(30px);
+  margin: 0;
+  color: light-dark(
+    var(--mantine-color-black),
+    var(--mantine-color-white-scheme)
+  );
+}
+
+.presentationSign {
+  top: 1000px;
+  left: 300px;
+  right: 0;
+  z-index: 5;
+  svg {
+    width: 194px;
+    path {
+      fill: light-dark(var(--mantine-color-white), var(--mantine-color-black));
+      stroke: light-dark(
+        var(--mantine-color-white),
+        var(--mantine-color-black)
+      );
+    }
+  }
+}
+
+.searchSign {
+  top: 1350px;
+  left: 650px;
+  right: 0;
+  z-index: 5;
+  svg {
+    width: 194px;
+    path {
+      fill: light-dark(var(--mantine-color-white), var(--mantine-color-black));
+      stroke: light-dark(
+        var(--mantine-color-white),
+        var(--mantine-color-black)
+      );
+    }
+  }
+}
+
+@media (max-width: $mantine-breakpoint-sm) {
+  .title {
+    font-size: 8vw;
+  }
+  .text {
+    font-size: 4vw;
+  }
+}

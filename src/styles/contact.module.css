@@ -8,6 +8,7 @@
 
 .text {
   font-family: "Sequel", sans-serif;
+  color: light-dark(var(--mantine-color-black), white);
   @media (max-width: $mantine-breakpoint-sm) {
     font-size: 4vw;
   }
@@ -26,6 +27,33 @@
 }
 
 .button {
-  background-color: light-dark(#2700b6c5, #b68500c5);
+  --button-bg: light-dark(
+    linear-gradient(
+      125deg,
+      var(--mantine-color-cyan-filled) 0%,
+      var(--mantine-color-lime-filled) 100%
+    ),
+    linear-gradient(
+      125deg,
+      var(--mantine-color-pink-filled) 0%,
+      var(--mantine-color-violet-filled) 100%
+    )
+  );
+  --button-hover: light-dark(
+    linear-gradient(
+      125deg,
+      var(--mantine-color-cyan-filled) 0%,
+      var(--mantine-color-lime-filled) 100%
+    ),
+    linear-gradient(
+      125deg,
+      var(--mantine-color-pink-filled) 0%,
+      var(--mantine-color-violet-filled) 100%
+    )
+  );
+  color: light-dark(
+    var(--mantine-color-scheme-light),
+    var(--mantine-color-scheme-dark)
+  );
   font-weight: 500;
 }
