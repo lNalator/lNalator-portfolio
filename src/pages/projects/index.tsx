@@ -1,6 +1,6 @@
 import { Container, SimpleGrid } from "@mantine/core";
 import { ArticleCard } from "../../components/articleCards/ArticleCard";
-import { cardData } from "./data/cardData";
+import { cardData } from "../../components/data/cardsData";
 
 export default function Projects() {
   const cards = cardData.map((project) => (
