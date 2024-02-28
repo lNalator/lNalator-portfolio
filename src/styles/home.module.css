@@ -1,7 +1,7 @@
 .container {
   width: 1030px;
   max-width: 90%;
-  height: 2000px;
+  height: 2250px;
   margin: auto;
   overflow: hidden;
   overflow-x: hidden;
@@ -16,6 +16,9 @@
   left: 0px;
   right: 0px;
   z-index: 5;
+  @media (max-width: $mantine-breakpoint-lg) {
+    top: 150px;
+  }
 }
 
 .image {
@@ -23,8 +26,8 @@
   max-width: 300px;
   border: 5px solid var(--mantine-color-yellow-6);
 
-  @media (max-width: $mantine-breakpoint-sm) {
-    width: 30vw;
+  @media (max-width: $mantine-breakpoint-lg) {
+    width: 40vw;
   }
 }
 
@@ -42,6 +45,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: $mantine-breakpoint-lg) {
+    position: sticky;
+  }
 }
 
 .textContainerTitle {
@@ -49,6 +56,9 @@
   left: 0;
   right: 0;
   z-index: 10;
+  @media (max-width: $mantine-breakpoint-lg) {
+    top: 100px;
+  }
 }
 
 .textContainerYears {
@@ -62,6 +72,11 @@
   .text {
     text-align: right;
   }
+  @media (max-width: $mantine-breakpoint-lg) {
+    left: 0px;
+    top: 500px;
+    z-index: 7;
+  }
 }
 
 .textContainerLocalisation {
@@ -69,6 +84,11 @@
   left: -450px;
   right: 0px;
   z-index: 7;
+  @media (max-width: $mantine-breakpoint-lg) {
+    left: 0px;
+    top: 630px;
+    z-index: 7;
+  }
 }
 
 .titleContainerPresentation {
@@ -78,11 +98,18 @@
   right: 0;
   margin: auto;
   z-index: 5;
+  @media (max-width: $mantine-breakpoint-lg) {
+    top: 850px;
+  }
+
   .titlePresentation {
     text-align: left;
     font-size: rem(35px);
     font-family: "Sequel", sans-serif;
     color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    @media (max-width: $mantine-breakpoint-lg) {
+      font-size: rem(30px);
+    }
   }
 }
 
@@ -95,6 +122,10 @@
   z-index: 5;
   display: flex;
   padding-top: 1rem;
+  @media (max-width: $mantine-breakpoint-lg) {
+    top: 1000px;
+    width: 95%;
+  }
 
   &::before {
     content: "";
@@ -128,11 +159,19 @@
   right: 0;
   margin: auto;
   z-index: 5;
+  @media (max-width: $mantine-breakpoint-lg) {
+    left: 0px;
+    top: 1700px;
+    font-size: rem(30px);
+  }
   .titlePresentation {
     text-align: left;
     font-size: rem(35px);
     font-family: "Sequel", sans-serif;
     color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    @media (max-width: $mantine-breakpoint-lg) {
+      font-size: rem(30px);
+    }
   }
 }
 
@@ -146,6 +185,10 @@
   margin: auto;
   flex-direction: column-reverse;
   align-items: flex-start;
+  @media (max-width: $mantine-breakpoint-lg) {
+    top: 1750px;
+    width: 90%;
+  }
   &::before {
     content: "";
     width: 116px;
@@ -175,6 +218,9 @@
   font-size: rem(20px);
   text-decoration: underline;
   color: light-dark(var(--mantine-color-black), var(--mantine-color-yellow-6));
+  @media (max-width: $mantine-breakpoint-lg) {
+    top: 2100px;
+  }
 }
 
 .title {
@@ -211,6 +257,10 @@
       );
     }
   }
+  @media (max-width: $mantine-breakpoint-lg) {
+    top: 800px;
+    left: 0px;
+  }
 }
 
 .searchSign {
@@ -228,13 +278,17 @@
       );
     }
   }
+  @media (max-width: $mantine-breakpoint-lg) {
+    top: 1650px;
+    left: 0px;
+  }
 }
 
-@media (max-width: $mantine-breakpoint-sm) {
+@media (max-width: $mantine-breakpoint-lg) {
   .title {
-    font-size: 8vw;
+    font-size: rem(30px);
   }
   .text {
-    font-size: 4vw;
+    font-size: rem(18.5px);
   }
 }
