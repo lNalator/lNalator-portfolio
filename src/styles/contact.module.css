@@ -9,6 +9,7 @@
 .text {
   font-family: "Sequel", sans-serif;
   color: light-dark(var(--mantine-color-black), white);
+  position: relative;
   @media (max-width: $mantine-breakpoint-sm) {
     font-size: 4vw;
   }
