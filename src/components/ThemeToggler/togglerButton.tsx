@@ -21,9 +21,10 @@ export default function TogglerButton() {
       variant="default"
       size="xl"
       aria-label="Toggle color scheme"
-      pos={"absolute"}
+      pos={"fixed"}
       right={20}
       top={20}
+      className={classes.toggler}
     >
       <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />
       <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />

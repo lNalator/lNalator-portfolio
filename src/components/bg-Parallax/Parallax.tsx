@@ -19,11 +19,10 @@ export default function Parallax() {
     { x: "0", y: "0", rotate: 0 },
   ]);
 
-  const ref = useRef(null);
   const pathName = usePathname();
 
   useEffect(() => {
-    if (pathName === "/about") {
+    if (pathName === "/contact") {
       setAnimate(AnimateValues[0]);
     } else if (pathName === "/projects") {
       setAnimate(AnimateValues[1]);
