@@ -1,3 +1,7 @@
+.toggler {
+  z-index: 1000;
+}
+
 .icon {
   width: rem(22px);
   height: rem(22px);
