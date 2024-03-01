@@ -12,8 +12,43 @@ import {
 import { useForm } from "@mantine/form";
 import classes from "../../styles/contact.module.css";
 import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
+import { useState } from "react";
 
 export default function Contact(props: any) {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    setLoading(true);
+    // e.preventDefault();
+
+    await fetch("/api/send", {
+      method: "POST",
+      body: JSON.stringify({
+        name: e.name,
+        email: e.email,
+        subject: e.subject,
+        message: e.message,
+      }),
+    })
+      .then((res) => {
+        res.json();
+        setLoading(false);
+        if (res.status == 200) {
+          alert(
+            `Merci de m'avoir contacté ${e.name}!\nJe vous répondrais sous peu!`
+          );
+        } else {
+          alert("Réessayez dans quelques secondes.");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        alert("Une erreur est survenue, Reessayez dans quelques secondes.");
+      });
+    return true;
+  };
+
   const form = useForm({
     initialValues: {
       name: "",
@@ -30,7 +65,12 @@ export default function Contact(props: any) {
 
   return (
     <Flex justify={"center"} align={"center"} w={"100%"} h={"100vh"}>
-      <form onSubmit={form.onSubmit(() => {})} className={classes.root}>
+      <form
+        onSubmit={form.onSubmit((e) => {
+          handleSubmit(e);
+        })}
+        className={classes.root}
+      >
         <Title order={3} ta="center" className={classes.text}>
           N'hésitez pas à me contacter
         </Title>
