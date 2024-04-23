@@ -17,7 +17,7 @@ export default function ProjectsPage() {
         O
       </Text>
       <Text size="xl" className={classes.text}>
-        PRO
+        PR
       </Text>
     </>
   );
