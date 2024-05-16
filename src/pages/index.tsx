@@ -100,13 +100,13 @@ export default function Home(props: any) {
       <Parallax speed={-10} className={classes.textContainerSearch}>
         <Text className={classes.textPresentation}>
           Je suis actuellement à la recherche d'une nouvelle opportunité
-          d'emploi en tant que développeur informatique, je suis donc ouvert à
-          toutes propositions de travail.
+          d'emploi en tant que développeur FullStack en Apprentissage, pour compléter un bachelor,
+          je suis donc ouvert à toutes propositions de travail en alternance.
         </Text>
       </Parallax>
       <Anchor
         className={classes.textPresentationA}
-        href="./CV-FRANCAIS.pdf"
+        href="./CV Enzo Midonet - FRANCAIS.pdf"
         target="_blank"
       >
         Téléchargez mon CV
