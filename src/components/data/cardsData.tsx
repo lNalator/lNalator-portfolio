@@ -1,12 +1,22 @@
 export const cardData = [
   {
-    projectLink: "https://www.curseforge.com/minecraft/mc-mods/cultivationcraft",
+    projectLink:
+      "https://www.curseforge.com/minecraft/mc-mods/cultivationcraft",
     title: "CultivationCraft",
     image: "./Images/CultivationCraft.png",
     description:
       "Projet de mod minecraft, se basant sur les novels chinois de 'Cultivation', je travail dessus avec un partenaire Australien.",
     date: "Mars 2024 - Au présent",
     projectType: "Personel - En Equipe",
+  },
+  {
+    projectLink: "https://github.com/lNalator/ToASCII",
+    title: "Media to ASCII",
+    image: "./Images/ASCII.png",
+    description:
+      "Mon projet 'Media to ASCII' convertit des images, des vidéos et des live en art ASCII en utilisant C# et le package Emgu pour la gestion vidéo et live.",
+    date: "Mai 2024",
+    projectType: "Personel - Solo",
   },
   {
     projectLink: "https://croquetteetmacadam.com/",
@@ -26,6 +36,4 @@ export const cardData = [
     date: "Janvier 2020",
     projectType: "Personel - Solo",
   },
-  
-
 ];
