@@ -23,5 +23,13 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/lnalator/lnalator-portfolio:latest
-      # Portainer stack webhook: pulls the new image and redeploys
-      #- run: curl -fsS -X POST "${{ secrets.PORTAINER_WEBHOOK_URL }}"
+      # Portainer CE: push deploy/docker-compose.yml to the stack, re-pulling the image
+      - env:
+          API: https://portainer.nalator.com/api/stacks/${{ secrets.PORTAINER_STACK_ID }}
+          EP: endpointId=${{ secrets.PORTAINER_ENDPOINT_ID }}
+          KEY: ${{ secrets.PORTAINER_TOKEN }}
+        run: |
+          env=$(curl -fsS -H "X-API-Key: $KEY" "$API" | jq -c '.Env // []')
+          jq -n --rawfile f deploy/docker-compose.yml --argjson env "$env" \
+            '{stackFileContent: $f, env: $env, prune: true, pullImage: true}' |
+          curl -fsS -X PUT "$API?$EP" -H "X-API-Key: $KEY" -H "Content-Type: application/json" -d @-
