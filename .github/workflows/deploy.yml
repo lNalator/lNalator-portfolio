@@ -24,4 +24,4 @@ jobs:
           push: true
           tags: ghcr.io/lnalator/lnalator-portfolio:latest
       # Portainer stack webhook: pulls the new image and redeploys
-      - run: curl -fsS -X POST "${{ secrets.PORTAINER_WEBHOOK_URL }}"
+      #- run: curl -fsS -X POST "${{ secrets.PORTAINER_WEBHOOK_URL }}"
