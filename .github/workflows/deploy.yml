@@ -28,8 +28,12 @@ jobs:
           API: https://portainer.nalator.com/api/stacks/${{ secrets.PORTAINER_STACK_ID }}
           EP: endpointId=${{ secrets.PORTAINER_ENDPOINT_ID }}
           KEY: ${{ secrets.PORTAINER_TOKEN }}
+          CF_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
         run: |
-          env=$(curl -fsS -H "X-API-Key: $KEY" "$API" | jq -c '.Env // []')
+          curl -sS -o stack.json -w "GET stack: HTTP %{http_code}\n" -H "CF-Access-Client-Id: $CF_ID" -H "CF-Access-Client-Secret: $CF_SECRET" -H "X-API-Key: $KEY" "$API"
+          jq -e . stack.json >/dev/null || { head -c 300 stack.json; exit 1; }
+          env=$(jq -c '.Env // []' stack.json)
           jq -n --rawfile f deploy/docker-compose.yml --argjson env "$env" \
             '{stackFileContent: $f, env: $env, prune: true, pullImage: true}' |
-          curl -fsS -X PUT "$API?$EP" -H "X-API-Key: $KEY" -H "Content-Type: application/json" -d @-
+          curl -fsS -X PUT "$API?$EP" -H "CF-Access-Client-Id: $CF_ID" -H "CF-Access-Client-Secret: $CF_SECRET" -H "X-API-Key: $KEY" -H "Content-Type: application/json" -d @-
