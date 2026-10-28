@@ -1,1 +1,1 @@
-This is my portfolio, deployment is made in vercel
+This is my portfolio, deployed with Docker (see deploy/)

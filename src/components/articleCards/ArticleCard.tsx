@@ -14,26 +14,30 @@ import {
 import classes from "./ArticleCard.module.css";
 
 export function ArticleCard(props: any) {
-  const linkProps = {
-    href: props.projectLink,
-    target: "_blank",
-    rel: "noopener noreferrer",
-  };
+  // no projectLink: the card is not clickable
+  const linkProps = props.projectLink
+    ? { href: props.projectLink, target: "_blank", rel: "noopener noreferrer" }
+    : {};
   const theme = useMantineTheme();
 
   return (
     <Card withBorder radius="md" className={classes.card}>
       <Card.Section>
         <a {...linkProps}>
-          <Image src={props.image} height={180} />
+          <Image src={props.image} height={180} loading="lazy" />
         </a>
       </Card.Section>
 
-      <Text className={classes.title} fw={500} component="a" {...linkProps}>
+      <Text
+        className={classes.title}
+        fw={500}
+        component={props.projectLink ? "a" : "div"}
+        {...linkProps}
+      >
         {props.title}
       </Text>
 
-      <Text fz="sm" c="dimmed" lineClamp={3}>
+      <Text fz="sm" c="dimmed" lineClamp={6}>
         {props.description}
       </Text>
       <Text fz="sm" c="dimmed" lineClamp={1}>
@@ -42,7 +46,7 @@ export function ArticleCard(props: any) {
 
       <Group justify="space-between" className={classes.footer}>
         <Center>
-          <Avatar src="./Images/Samurai.png" size={24} radius="xl" mr="xs" />
+          <Avatar src="/Images/Samurai.png" size={24} radius="xl" mr="xs" />
           <Text fz="sm" inline>
             {props.projectType}
           </Text>

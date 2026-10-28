@@ -1,116 +1,111 @@
 import { Anchor, Container, Image, Text, Title } from "@mantine/core";
 import classes from "../styles/home.module.css";
-
+import Link from "next/link";
 import { Parallax } from "react-scroll-parallax";
-export default function Home(props: any) {
+import { useLang } from "../i18n/LangContext";
+
+const Sign = ({ flip }: { flip?: boolean }) => (
+  <svg
+    className={classes.sign}
+    viewBox="0 0 195 198"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden
+  >
+    <path d={flip ? "M194 197V112.715L1 1V85.7837L194 197Z" : "M1 197V112.715L194 1V85.7837L1 197Z"} />
+  </svg>
+);
+
+const Lines = ({ lines }: { lines: string[] }) => (
+  <>
+    {lines.map((line, i) => (
+      <span key={i}>
+        {i > 0 && <br />}
+        {line}
+      </span>
+    ))}
+  </>
+);
+
+export default function Home() {
+  const { t } = useLang();
+
   return (
     <Container className={classes.container}>
-      <Parallax speed={-20} className={classes.imageContainer}>
-        <Image
-          src={"./Images/Samurai.png"}
-          radius={"100%"}
-          className={classes.image}
-        />
-      </Parallax>
+      <section className={classes.hero}>
+        <div className={classes.heroTitle}>
+          <Title order={1} className={classes.title}>
+            ENZO MIDONET
+          </Title>
+          <Title order={2} className={classes.subtitle}>
+            {t.home.role}
+          </Title>
+        </div>
 
-      <Parallax speed={1} className={classes.textContainerTitle}>
-        <Title order={1} className={classes.title}>
-          ENZO MIDONET
-        </Title>
-        <Title order={2} className={classes.text}>
-          Développeur Informatique Fullstack
-        </Title>
-      </Parallax>
-
-      <Parallax speed={-10} className={classes.textContainerYears}>
-        <Title order={1} className={classes.title}>
-          2
-        </Title>
-        <Title order={2} className={classes.text}>
-          Années
-          <br />
-          d'expérience
-        </Title>
-      </Parallax>
-
-      <Parallax speed={-5} className={classes.textContainerLocalisation}>
-        <Title order={2} className={classes.text}>
-          Actuellement sur
-        </Title>
-        <Title order={1} className={classes.title}>
-          BORDEAUX
-        </Title>
-      </Parallax>
-
-      <Parallax speed={10} className={classes.presentationSign}>
-        <svg
-          width="195"
-          height="198"
-          viewBox="0 0 195 198"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1 197V112.715L194 1V85.7837L1 197Z"
-            fill="black"
-            stroke="black"
+        <Parallax speed={-6} className={classes.heroImage}>
+          <Image
+            src={"/Images/Samurai.png"}
+            alt="Enzo Midonet"
+            radius={"100%"}
+            className={classes.image}
           />
-        </svg>
+        </Parallax>
+
+        <div className={classes.heroLocation}>
+          <Title order={2} className={classes.subtitle}>
+            {t.home.locationLabel}
+          </Title>
+          <Title order={1} className={classes.title}>
+            {t.home.location}
+          </Title>
+        </div>
+
+        <div className={classes.heroYears}>
+          <Title order={1} className={classes.title}>
+            {t.home.years}
+          </Title>
+          <Title order={2} className={classes.subtitle}>
+            <Lines lines={t.home.yearsLabel} />
+          </Title>
+        </div>
+      </section>
+
+      {/* one Parallax per block: title and text move together so they can never overlap */}
+      <Parallax speed={-3} className={classes.block}>
+        <div className={classes.blockHead}>
+          <Sign />
+          <Title order={1} className={classes.titlePresentation}>
+            <Lines lines={t.home.experienceTitle} />
+          </Title>
+        </div>
+        <div className={classes.blockText}>
+          <Text className={classes.textPresentation}>
+            {t.home.experienceText}
+          </Text>
+        </div>
       </Parallax>
 
-      <Parallax speed={0} className={classes.titleContainerPresentation}>
-        <Title order={1} className={classes.titlePresentation}>
-          Expérience <br />
-          Professionnelle
-        </Title>
-      </Parallax>
-
-      <Parallax speed={-10} className={classes.textContainerPresentation}>
-        <Text className={classes.textPresentation}>
-          J'ai pu travailler 2 ans en tant que Développeur Informatique
-          FullStack chez l'entreprise Ventoris pour valider mon cursus en
-          alternance. J'ai également eu l'occasion de travailler sur de nombreux
-          projets académique et personnel, notamment, en tant qu'Intégrateur Web
-          bénévole pour l'association Croquette et macadam.
-        </Text>
-      </Parallax>
-
-      <Parallax speed={10} className={classes.searchSign}>
-        <svg
-          width="195"
-          height="198"
-          viewBox="0 0 195 198"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+      <Parallax speed={-3} className={`${classes.block} ${classes.blockRight}`}>
+        <div className={classes.blockHead}>
+          <Sign flip />
+          <Title order={1} className={classes.titlePresentation}>
+            {t.home.todayTitle}
+          </Title>
+        </div>
+        <div className={classes.blockText}>
+          <Text className={classes.textPresentation}>{t.home.todayText}</Text>
+        </div>
+        <Anchor component={Link} href="/projects" className={classes.cv}>
+          {t.home.projects}
+        </Anchor>
+        <Anchor
+          className={classes.cvSecondary}
+          href={t.home.cvFile}
+          target="_blank"
         >
-          <path
-            d="M194 197V112.715L1 1V85.7837L194 197Z"
-            fill="black"
-            stroke="black"
-          />
-        </svg>
+          {t.home.cv}
+        </Anchor>
       </Parallax>
-
-      <Parallax speed={0} className={classes.titleContainerSearch}>
-        <Title order={1} className={classes.titlePresentation}>
-          Aujourd'hui ?
-        </Title>
-      </Parallax>
-
-      <Parallax speed={-10} className={classes.textContainerSearch}>
-        <Text className={classes.textPresentation}>
-          Je suis actuellement à la recherche d'une nouvelle opportunité
-          d'emploi en tant que développeur FullStack en Apprentissage, pour compléter un bachelor,
-          je suis donc ouvert à toutes propositions de travail en alternance.
-        </Text>
-      </Parallax>
-      <Anchor
-        className={classes.textPresentationA}
-        href="./CV Enzo Midonet - FRANCAIS.pdf"
-        target="_blank"
-      >
-        Téléchargez mon CV
-      </Anchor>
     </Container>
   );
 }

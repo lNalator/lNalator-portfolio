@@ -5,11 +5,9 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import ProjectsPage from "../components/ProjectsPage";
-import HomePage from "../components/HomePage";
+import NavLabel from "../NavLabel";
 import { variants } from "../settings/variants";
 import NavPath from "../settings/NavPath";
-import ContactPage from "../components/ContactPage";
 
 export function NavBarMobile() {
   const router = useRouter();
@@ -66,9 +64,7 @@ export function NavBarMobile() {
                 }
               }}
             >
-              {(pathName === "/contact" && <ContactPage/>) ||
-                (pathName === "/projects" && <ProjectsPage />) ||
-                (pathName === "/" && <HomePage />)}
+              <NavLabel />
             </motion.div>
           </AnimatePresence>
         </Center>

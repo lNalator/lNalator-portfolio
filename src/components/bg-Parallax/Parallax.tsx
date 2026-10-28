@@ -1,53 +1,46 @@
-import Elipse from "./components/Elipse";
 import classes from "../../styles/Parallax.module.css";
-import Line from "./components/Line";
-import Rect from "./components/Rect";
-import { useTransform, MotionValue } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { transition } from "./settings/transition";
-import { AnimateValues } from "./settings/AnimateValues";
+import { AnimateValues, SCROLL_TRAVEL } from "./settings/AnimateValues";
 
-function useParallax(value: MotionValue<number>, distance: number) {
-  return useTransform(value, [0, 1], [-distance, distance]);
+const blocks = [classes.circle, classes.band, classes.rect];
+
+// Smooth tween between page poses; each block lags a little more than the one before for depth.
+const tween = (i: number) => ({
+  type: "tween" as const,
+  duration: 1.1,
+  delay: i * 0.08,
+  ease: [0.65, 0, 0.35, 1] as [number, number, number, number],
+});
+
+function Layer({ travel, children }: { travel: string; children: React.ReactNode }) {
+  const { scrollYProgress } = useScroll();
+  const reduce = useReducedMotion();
+  const y = useTransform(scrollYProgress, [0, 1], ["0vh", reduce ? "0vh" : travel]);
+  return (
+    <motion.div className={classes.layer} style={{ y }}>
+      {children}
+    </motion.div>
+  );
 }
 
-export default function Parallax() {
-  const [animate, setAnimate] = useState([
-    { x: "0", y: "0", rotate: 0 },
-    { x: "0", y: "0", rotate: 0 },
-    { x: "0", y: "0", rotate: 0 },
-  ]);
-
+export default function Parallax({ isMobile }: { isMobile?: boolean }) {
   const pathName = usePathname();
-
-  useEffect(() => {
-    if (pathName === "/contact") {
-      setAnimate(AnimateValues[0]);
-    } else if (pathName === "/projects") {
-      setAnimate(AnimateValues[1]);
-    } else {
-      setAnimate(AnimateValues[2]);
-    }
-  }, [pathName]);
+  const poses = AnimateValues[isMobile ? "mobile" : "desktop"];
+  const pose = poses[pathName as keyof typeof poses] ?? poses["/"];
 
   return (
     <div className={classes.container}>
-      <Elipse
-        class={classes.elementElipse}
-        transition={transition}
-        animate={animate[0]}
-      />
-      <Line
-        class={classes.elementLine}
-        transition={transition}
-        animate={animate[1]}
-      />
-      <Rect
-        class={classes.elementRect}
-        transition={transition}
-        animate={animate[2]}
-      />
+      {blocks.map((cls, i) => (
+        <Layer key={i} travel={SCROLL_TRAVEL[i]}>
+          <motion.div
+            className={cls}
+            initial={false}
+            animate={pose[i]}
+            transition={tween(i)}
+          />
+        </Layer>
+      ))}
     </div>
   );
 }

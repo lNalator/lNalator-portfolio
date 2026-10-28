@@ -1,230 +1,205 @@
 .container {
   width: 1030px;
-  max-width: 90%;
-  height: 1850px;
-  margin: auto;
-  overflow: hidden;
-  overflow-x: hidden;
-  @media (max-width: $mantine-breakpoint-lg) {
-    height: 2250px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: rem(72px) rem(20px) rem(120px);
+  display: flex;
+  flex-direction: column;
+  gap: rem(110px);
+  overflow-x: clip;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: rem(84px) rem(16px) rem(100px); /* top: clear the fixed toggles */ /* bottom: room for the mobile nav footer */
+    gap: rem(72px);
   }
 }
 
-.imageContainer {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 300px;
-  left: 0px;
-  right: 0px;
+/* ---------- hero ---------- */
+
+.hero {
+  display: grid;
+  /* minmax(0,1fr): equal side columns so the portrait is always dead centre */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-areas:
+    "title title title"
+    "location image years";
+  align-items: end;
+  gap: rem(32px) rem(24px);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title title"
+      "image image"
+      "location years";
+    align-items: start;
+    gap: rem(28px) rem(12px);
+  }
+}
+
+.heroTitle {
+  grid-area: title;
+  z-index: 10;
+}
+
+.heroImage {
+  grid-area: image;
   z-index: 5;
-  @media (max-width: $mantine-breakpoint-lg) {
-    top: 150px;
+  justify-self: center;
+  width: clamp(rem(150px), 26vw, rem(300px)); /* fixed size per screen */
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: min(62vw, rem(260px));
   }
 }
 
 .image {
   width: 100%;
-  max-width: 300px;
+  aspect-ratio: 1;
+  object-fit: cover;
   border: 5px solid var(--mantine-color-yellow-6);
-
-  @media (max-width: $mantine-breakpoint-lg) {
-    width: 40vw;
-  }
 }
 
-.textContainerTitle,
-.textContainerYears,
-.textContainerLocalisation,
-.titleContainerPresentation,
-.textContainerPresentation,
-.titleContainerSearch,
-.textContainerSearch,
-.searchSign,
-.presentationSign {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: $mantine-breakpoint-lg) {
-    position: sticky;
-  }
-}
-
-.textContainerTitle {
-  top: 175px;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  @media (max-width: $mantine-breakpoint-lg) {
-    top: 100px;
-  }
-}
-
-.textContainerYears {
-  top: 600px;
-  left: 450px;
-  right: 0px;
-
+.heroLocation,
+.heroYears {
   .title {
-    text-align: left;
+    font-size: clamp(rem(22px), 3.7vw, rem(50px));
   }
-  .text {
-    text-align: right;
-  }
-  @media (max-width: $mantine-breakpoint-lg) {
-    left: 0px;
-    top: 500px;
-    z-index: 7;
+  .subtitle {
+    font-size: clamp(rem(13px), 2.3vw, rem(30px));
   }
 }
 
-.textContainerLocalisation {
-  top: 650px;
-  left: -450px;
-  right: 0px;
-  z-index: 7;
-  @media (max-width: $mantine-breakpoint-lg) {
-    left: 0px;
-    top: 630px;
-    z-index: 7;
-  }
-}
-
-.titleContainerPresentation {
-  width: 80%;
-  top: 1000px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: 5;
-  @media (max-width: $mantine-breakpoint-lg) {
-    top: 850px;
-  }
-
-  .titlePresentation {
+.heroLocation {
+  grid-area: location;
+  text-align: left;
+  .title,
+  .subtitle {
     text-align: left;
-    font-size: rem(35px);
-    font-family: "Sequel", sans-serif;
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-    @media (max-width: $mantine-breakpoint-lg) {
-      font-size: rem(30px);
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    text-align: center;
+    .title,
+    .subtitle {
+      text-align: center;
     }
   }
 }
 
-.textContainerPresentation {
-  width: 500px;
-  top: 1125px;
-  left: -400px;
-  right: 0;
-  margin: auto;
-  z-index: 5;
+.heroYears {
+  grid-area: years;
+  .title,
+  .subtitle {
+    text-align: right;
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    .title,
+    .subtitle {
+      text-align: center;
+    }
+  }
+}
+
+/* ---------- content blocks ---------- */
+
+.block {
+  position: relative;
+  width: 100%;
+  max-width: rem(560px);
   display: flex;
-  padding-top: 1rem;
-  @media (max-width: $mantine-breakpoint-lg) {
-    top: 1000px;
-    width: 95%;
+  flex-direction: column;
+  gap: rem(20px);
+  z-index: 5;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    max-width: none;
+  }
+}
+
+.blockRight {
+  align-self: flex-end;
+}
+
+.blockHead {
+  position: relative;
+  width: fit-content;
+}
+
+.sign {
+  position: absolute;
+  top: 50%;
+  width: rem(120px);
+  height: auto;
+  transform: translateY(-50%);
+  left: calc(100% - rem(48px)); /* tucked behind the end of the title */
+  z-index: -1;
+  path {
+    fill: light-dark(var(--mantine-color-white), var(--mantine-color-black));
+    stroke: light-dark(var(--mantine-color-white), var(--mantine-color-black));
   }
 
-  &::before {
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: none;
+  }
+}
+
+.blockText {
+  position: relative;
+  padding-top: rem(16px);
+
+  &::before,
+  &::after {
     content: "";
+    position: absolute;
     width: 116px;
     height: 6px;
     background: #fec107;
-    position: absolute;
+  }
+  &::before {
     left: 0;
     top: 0;
   }
   &::after {
-    content: "";
-    width: 116px;
-    height: 6px;
-    background: #fec107;
-    position: absolute;
-    right: 50px;
-    bottom: -10px;
-  }
-  .textPresentation {
-    text-align: left;
-    font-size: rem(20px);
-    font-family: "Sequel", sans-serif;
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    right: rem(50px);
+    bottom: rem(-10px);
   }
 }
 
-.titleContainerSearch {
-  top: 1450px;
-  left: 1000px;
-  right: 0;
-  margin: auto;
-  z-index: 5;
-  @media (max-width: $mantine-breakpoint-lg) {
-    left: 0px;
-    top: 1700px;
-    font-size: rem(30px);
-  }
-  .titlePresentation {
-    text-align: left;
-    font-size: rem(35px);
-    font-family: "Sequel", sans-serif;
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-    @media (max-width: $mantine-breakpoint-lg) {
-      font-size: rem(30px);
-    }
+.titlePresentation {
+  text-align: left;
+  font-family: "Sequel", sans-serif;
+  font-size: rem(35px);
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(28px);
   }
 }
 
-.textContainerSearch {
-  width: 600px;
-  top: 1600px;
-  right: -700px;
-  left: 0;
-  padding-top: 1rem;
-  z-index: 5;
-  margin: auto;
-  flex-direction: column-reverse;
-  align-items: flex-start;
-  @media (max-width: $mantine-breakpoint-lg) {
-    top: 1750px;
-    width: 90%;
-  }
-  &::before {
-    content: "";
-    width: 116px;
-    height: 6px;
-    background: #fec107;
-    position: absolute;
-    left: 450px;
-    right: 0;
-    top: 0;
-  }
-  .textPresentation {
-    text-align: left;
-    font-size: rem(20px);
-    font-family: "Sequel", sans-serif;
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+.textPresentation {
+  text-align: left;
+  font-family: "Sequel", sans-serif;
+  font-size: rem(20px);
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(16px);
   }
 }
 
-.textPresentationA {
-  position: absolute;
-  top: 1750px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
-  width: 325px;
-  text-align: center;
+.cv {
+  align-self: center;
+  margin-top: rem(32px);
+  font-family: "Sequel", sans-serif;
   font-size: rem(20px);
   text-decoration: underline;
   color: light-dark(var(--mantine-color-black), var(--mantine-color-yellow-6));
-  @media (max-width: $mantine-breakpoint-lg) {
-    top: 2100px;
-  }
 }
+
+.cvSecondary {
+  composes: cv;
+  margin-top: rem(8px);
+}
+
+/* ---------- shared type ---------- */
 
 .title {
   text-align: center;
@@ -232,66 +207,20 @@
   font-size: rem(50px);
   margin: 0;
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(28px);
+  }
 }
 
-.text {
+.subtitle {
   text-align: center;
   font-family: "Sequel", sans-serif;
   font-size: rem(30px);
   margin: 0;
-  color: light-dark(
-    var(--mantine-color-black),
-    var(--mantine-color-white-scheme)
-  );
-}
-
-.presentationSign {
-  top: 1000px;
-  left: 300px;
-  right: 0;
-  z-index: 5;
-  svg {
-    width: 194px;
-    path {
-      fill: light-dark(var(--mantine-color-white), var(--mantine-color-black));
-      stroke: light-dark(
-        var(--mantine-color-white),
-        var(--mantine-color-black)
-      );
-    }
-  }
-  @media (max-width: $mantine-breakpoint-lg) {
-    top: 800px;
-    left: 0px;
-  }
-}
-
-.searchSign {
-  top: 1350px;
-  left: 650px;
-  right: 0;
-  z-index: 5;
-  svg {
-    width: 194px;
-    path {
-      fill: light-dark(var(--mantine-color-white), var(--mantine-color-black));
-      stroke: light-dark(
-        var(--mantine-color-white),
-        var(--mantine-color-black)
-      );
-    }
-  }
-  @media (max-width: $mantine-breakpoint-lg) {
-    top: 1650px;
-    left: 0px;
-  }
-}
-
-@media (max-width: $mantine-breakpoint-lg) {
-  .title {
-    font-size: rem(30px);
-  }
-  .text {
-    font-size: rem(18.5px);
+  /* accent colour: readable on the light gradient and echoing the yellow bars in dark mode */
+  color: light-dark(#0a2a66, #fec107);
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(15px);
+    overflow-wrap: anywhere;
   }
 }

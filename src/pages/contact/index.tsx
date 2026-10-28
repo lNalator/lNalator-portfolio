@@ -13,9 +13,11 @@ import { useForm } from "@mantine/form";
 import classes from "../../styles/contact.module.css";
 import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
 import { useState } from "react";
+import { useLang } from "../../i18n/LangContext";
 
 export default function Contact(props: any) {
   const [loading, setLoading] = useState(false);
+  const { t } = useLang();
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -34,17 +36,15 @@ export default function Contact(props: any) {
         res.json();
         setLoading(false);
         if (res.status == 200) {
-          alert(
-            `Merci de m'avoir contacté ${e.name}!\nJe vous répondrais sous peu!`
-          );
+          alert(t.contact.thanks(e.name));
         } else {
-          alert("Réessayez dans quelques secondes.");
+          alert(t.contact.retry);
         }
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        alert("Une erreur est survenue, Reessayez dans quelques secondes.");
+        alert(t.contact.error);
       });
     return true;
   };
@@ -72,7 +72,7 @@ export default function Contact(props: any) {
         className={classes.root}
       >
         <Title order={3} ta="center" className={classes.text}>
-          N'hésitez pas à me contacter
+          {t.contact.title}
         </Title>
         <Group gap="xs" justify="center" wrap="nowrap" m={"sm"}>
           <ActionIcon
@@ -110,14 +110,14 @@ export default function Contact(props: any) {
         <SimpleGrid cols={{ base: 1, sm: 2 }} mt="xl">
           <Input
             classNames={{ wrapper: classes.wrapper, input: classes.input }}
-            placeholder="NOM"
+            placeholder={t.contact.name}
             name="name"
             variant="filled"
             {...form.getInputProps("name")}
           />
           <Input
             classNames={{ wrapper: classes.wrapper, input: classes.input }}
-            placeholder="EMAIL"
+            placeholder={t.contact.email}
             name="email"
             variant="filled"
             {...form.getInputProps("email")}
@@ -126,7 +126,7 @@ export default function Contact(props: any) {
 
         <Input
           classNames={{ wrapper: classes.wrapper, input: classes.input }}
-          placeholder="SUJET"
+          placeholder={t.contact.subject}
           mt="md"
           name="subject"
           variant="filled"
@@ -135,7 +135,7 @@ export default function Contact(props: any) {
         <Textarea
           classNames={{ wrapper: classes.wrapper, input: classes.input }}
           mt="md"
-          placeholder="MESSAGE"
+          placeholder={t.contact.message}
           maxRows={props.window.isMobile ? 5 : 15}
           minRows={props.window.isMobile ? 5 : 13}
           autosize
@@ -151,7 +151,7 @@ export default function Contact(props: any) {
             className={classes.button}
             autoContrast
           >
-            Send message
+            {t.contact.send}
           </Button>
         </Group>
       </form>
