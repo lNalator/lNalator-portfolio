@@ -1,0 +1,11 @@
+services:
+  portfolio:
+    image: ghcr.io/lnalator/lnalator-portfolio:latest
+    container_name: lnalator-portfolio
+    pull_policy: always
+    restart: unless-stopped
+    networks: [caddy]
+
+networks:
+  caddy:
+    external: true
