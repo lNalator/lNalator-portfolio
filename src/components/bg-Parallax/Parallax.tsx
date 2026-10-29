@@ -1,5 +1,5 @@
 import classes from "../../styles/Parallax.module.css";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { AnimateValues, SCROLL_TRAVEL } from "./settings/AnimateValues";
 
@@ -14,9 +14,17 @@ const tween = (i: number) => ({
 });
 
 function Layer({ travel, children }: { travel: string; children: React.ReactNode }) {
-  const { scrollYProgress } = useScroll();
+  const { scrollY } = useScroll();
+  // not scrollYProgress: on a page that cannot scroll it reads 1 after a reload but keeps the old value on navigation
+  const scrollYProgress = useTransform(scrollY, (v) => {
+    if (typeof document === "undefined") return 0; // SSR
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    return max > 0 ? Math.min(1, v / max) : 0;
+  });
   const reduce = useReducedMotion();
-  const y = useTransform(scrollYProgress, [0, 1], ["0vh", reduce ? "0vh" : travel]);
+  // spring: a route change resets scroll to 0 in one frame, which would make the layers snap
+  const progress = useSpring(scrollYProgress, { stiffness: 80, damping: 26, mass: 0.6 });
+  const y = useTransform(progress, [0, 1], ["0vh", reduce ? "0vh" : travel]);
   return (
     <motion.div className={classes.layer} style={{ y }}>
       {children}

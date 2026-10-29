@@ -3,12 +3,12 @@
 export const AnimateValues = {
   desktop: {
     "/": [
-      { x: "66vw", y: "-16vh", rotate: 0 },
-      { x: "-12vw", y: "74vh", rotate: -12 },
+      { x: "66vw", y: "-20vh", rotate: 0 },
+      { x: "-12vw", y: "90vh", rotate: -12 },
       { x: "-7vw", y: "26vh", rotate: 14 },
     ],
     "/projects": [
-      { x: "-15vw", y: "60vh", rotate: 0 },
+      { x: "-15vw", y: "70vh", rotate: 0 },
       { x: "-10vw", y: "6vh", rotate: 9 },
       { x: "80vw", y: "34vh", rotate: -12 },
     ],

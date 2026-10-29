@@ -3,6 +3,10 @@ import type { AppProps } from "next/app";
 import { AppShell, MantineProvider } from "@mantine/core";
 import classes from "../styles/_main.module.css";
 import "../styles/global.css";
+// keep page styles loaded: the exiting page stays mounted during the slide and would lose its CSS
+import "../styles/home.module.css";
+import "../styles/contact.module.css";
+import "../components/articleCards/ArticleCard.module.css";
 import Navbar from "../components/navBar/Navbar";
 import { NavBarMobile } from "../components/navBar/mobile/NavBarMobile";
 import Parallax from "../components/bg-Parallax/Parallax";
@@ -10,11 +14,23 @@ import TogglerButton from "../components/ThemeToggler/togglerButton";
 import LangToggler from "../components/ThemeToggler/langToggler";
 import { LangProvider } from "../i18n/LangContext";
 import useWindowSize from "../helpers/useWindowSize";
-import { ParallaxProvider } from "react-scroll-parallax";
+import { ParallaxProvider, useParallaxController } from "react-scroll-parallax";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import NavPath from "../components/navBar/settings/NavPath";
+
+const SLIDE = 0.8;
+
+// parallax measures elements while the page is still offset by the slide; re-measure once it lands
+function ParallaxSync({ children }: { children: ReactNode }) {
+  const controller = useParallaxController();
+  useEffect(() => {
+    const id = setTimeout(() => controller?.update(), SLIDE * 1000 + 50);
+    return () => clearTimeout(id);
+  }, [controller]);
+  return <>{children}</>;
+}
 
 const pageVariants = {
   enter: (d: number) => ({ y: `${d * 100}vh`, opacity: 0 }),
@@ -55,10 +71,12 @@ export default function App({ Component, pageProps }: AppProps) {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.8, ease: [0.65, 0, 0.35, 1] }}
+              transition={{ duration: SLIDE, ease: [0.65, 0, 0.35, 1] }}
             >
               <ParallaxProvider>
-                <Component {...pageProps} window={window} />
+                <ParallaxSync>
+                  <Component {...pageProps} window={window} />
+                </ParallaxSync>
               </ParallaxProvider>
             </motion.div>
           </AnimatePresence>

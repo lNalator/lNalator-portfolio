@@ -33,16 +33,16 @@ export default function Home() {
   return (
     <Container className={classes.container}>
       <section className={classes.hero}>
-        <div className={classes.heroTitle}>
+        <Parallax speed={5} className={classes.heroTitle}>
           <Title order={1} className={classes.title}>
             ENZO MIDONET
           </Title>
           <Title order={2} className={classes.subtitle}>
             {t.home.role}
           </Title>
-        </div>
+        </Parallax>
 
-        <Parallax speed={-6} className={classes.heroImage}>
+        <Parallax speed={-14} scale={[1, 1.1]} className={classes.heroImage}>
           <Image
             src={"/Images/Samurai.png"}
             alt="Enzo Midonet"
@@ -51,27 +51,27 @@ export default function Home() {
           />
         </Parallax>
 
-        <div className={classes.heroLocation}>
+        <Parallax speed={-4} translateX={["5%", "-5%"]} className={classes.heroLocation}>
           <Title order={2} className={classes.subtitle}>
             {t.home.locationLabel}
           </Title>
           <Title order={1} className={classes.title}>
             {t.home.location}
           </Title>
-        </div>
+        </Parallax>
 
-        <div className={classes.heroYears}>
+        <Parallax speed={-8} translateX={["-5%", "5%"]} className={classes.heroYears}>
           <Title order={1} className={classes.title}>
             {t.home.years}
           </Title>
           <Title order={2} className={classes.subtitle}>
             <Lines lines={t.home.yearsLabel} />
           </Title>
-        </div>
+        </Parallax>
       </section>
 
       {/* one Parallax per block: title and text move together so they can never overlap */}
-      <Parallax speed={-3} className={classes.block}>
+      <Parallax speed={-7} translateX={["-6%", "0%"]} className={classes.block}>
         <div className={classes.blockHead}>
           <Sign />
           <Title order={1} className={classes.titlePresentation}>
@@ -85,7 +85,7 @@ export default function Home() {
         </div>
       </Parallax>
 
-      <Parallax speed={-3} className={`${classes.block} ${classes.blockRight}`}>
+      <Parallax speed={-7} translateX={["6%", "0%"]} className={`${classes.block} ${classes.blockRight}`}>
         <div className={classes.blockHead}>
           <Sign flip />
           <Title order={1} className={classes.titlePresentation}>
