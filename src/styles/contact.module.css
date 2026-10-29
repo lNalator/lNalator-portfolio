@@ -2,7 +2,7 @@
   width: 60%;
   margin: 10rem 0;
   @media (max-width: $mantine-breakpoint-sm) {
-    width: 80%;
+    width: 88%;
   }
 }
 
@@ -11,7 +11,7 @@
   color: light-dark(var(--mantine-color-black), white);
   position: relative;
   @media (max-width: $mantine-breakpoint-sm) {
-    font-size: 4vw;
+    font-size: max(1rem, 4.2vw);
   }
 }
 

@@ -63,10 +63,10 @@
 .heroLocation,
 .heroYears {
   .title {
-    font-size: clamp(rem(22px), 3.7vw, rem(50px));
+    font-size: clamp(rem(26px), 3.7vw, rem(50px));
   }
   .subtitle {
-    font-size: clamp(rem(13px), 2.3vw, rem(30px));
+    font-size: clamp(rem(16px), 2.3vw, rem(30px));
   }
 }
 

@@ -17,6 +17,7 @@ import useWindowSize from "../helpers/useWindowSize";
 import { ParallaxProvider, useParallaxController } from "react-scroll-parallax";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { useEffect, useRef, type ReactNode } from "react";
 import NavPath from "../components/navBar/settings/NavPath";
 
@@ -52,6 +53,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <MantineProvider>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <LangProvider>
       <AppShell className={classes.root}>
         <AppShell.Navbar bg={"unset"} withBorder={false}>
